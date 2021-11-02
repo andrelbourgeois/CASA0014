@@ -9,12 +9,15 @@
 
  #include <ESP8266WiFi.h>
 
- const char* = "SSID here";
- const char* password = "password here";
+ const char* ssid = "SSID here"; //declare constants
+ const char* password = "password here"; //edit for specified wifi network
  const char* host = "iot.io";
 
  void setup() {
-   Serial.begin(115200);
+   Serial.begin(115200); //this is the baud rate
+   //in telecommunication and electronics, baud is a common unit of
+   //measurement of symbol rate, which is one of the components that
+   //determine the speed of communication over a data channel.
    delay(100);
 
    // start by connecting to the WiFi network
@@ -23,13 +26,15 @@
    Serial.println(ssid);
    WiFi.begin(ssid, password);
 
-   while (WiFi.status() != WL_CONNECTED) {
+   while (WiFi.status() != WL_CONNECTED) { //provides visual feedback
+     //in the form of ... that the wifi is not connected
      delay(500);
      Serial.print(".");
    }
 
    Serial.println("");
-   Serial.println("WiFi connected");
+   Serial.println("WiFi connected"); //provides visual feedback that the Wifi
+   //has connected along with the IP address
    Serial.println("IP address: ");
    Serial.println(WiFi.localIP());
  }

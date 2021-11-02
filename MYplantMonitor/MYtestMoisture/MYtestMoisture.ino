@@ -1,4 +1,4 @@
-uint_t soilPin = 0; //one nail goes to +5V, the other goes to this anologue pin
+uint8_t soilPin = 0; //one nail goes to +5V, the other goes to this anologue pin
 int moisture_val; //initialize the moisture_val integer
 
 int sensorVCC = 13; //initialize the sensorVCC integer
@@ -17,7 +17,7 @@ void setup() { //initialize variables’ values,
   //0V (ground) for LOW
 }
 
-void loop { //loops consecutively,
+void loop() { //loops consecutively,
 //allowing your program to change and respond,
 //use it to actively control the Arduino board
 

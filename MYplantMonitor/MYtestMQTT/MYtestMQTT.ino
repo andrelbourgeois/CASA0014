@@ -12,8 +12,8 @@
  #include <PubSubClient.h>
 
  const char* ssid = "enter SSID"; //declare constants
- const char* password = "enter password";
- const char* mqtt_server = "enter mqtt url";
+ const char* password = "enter password"; //edit for specified wifi network
+ const char* mqtt_server = "enter mqtt url"; //and mqtt server
 
  Timezone GB; //declare a timezone for ezTime
 
@@ -34,7 +34,7 @@
    Serial.begin(115200);
    delay(100);
 
-   startWifi(); // Start a Wi-Fi access point, and try to connect to some given access points
+   startWifi(); //start a Wi-Fi access point, and try to connect to some given access points
 
    //get real date an time
    waitForSync();

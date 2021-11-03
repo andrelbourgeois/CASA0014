@@ -151,19 +151,19 @@ void sendMQTT() {
   snprintf (msg, 50, "%.1f", Temperature);
   Serial.print("Publish message for t: ");
   Serial.println(msg);
-  client.publish("plant/minty/temperature", msg);
+  client.publish("student/casa0014/plant/ucfnbou/temperature", msg);
 
   Humidity = dht.readHumidity(); // Gets the values of the humidity
   snprintf (msg, 50, "%.0f", Humidity);
   Serial.print("Publish message for h: ");
   Serial.println(msg);
-  client.publish("plant/minty/humidity", msg);
+  client.publish("student/casa0014/plant/ucfnbou/humidity", msg);
 
   //Moisture = analogRead(soilPin);   // moisture read by readMoisture function
   snprintf (msg, 50, "%.0i", Moisture);
   Serial.print("Publish message for m: ");
   Serial.println(msg);
-  client.publish("plant/minty/moisture", msg);
+  client.publish("student/casa0014/plant/ucfnbou/moisture", msg);
 
 }
 

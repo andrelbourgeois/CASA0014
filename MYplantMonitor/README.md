@@ -77,6 +77,7 @@ in allowing me to understand the code better.
 # Things I Want to Improve for This Project
 - Add in a light sensor to detect how much light the plant is getting
 - Where is the best placement for the moisture sensor?
+- Mark which nail is positive/negative
 
 # What I Want to Improve for My Next Project
 - Better and more consistent documentation for each step

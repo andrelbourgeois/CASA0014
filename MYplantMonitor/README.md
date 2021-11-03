@@ -47,30 +47,28 @@ polka dots on top and a deep purple-red on the bottom side.
 # The Process
 **Step 1:**
 
-
-# Things That Made This Project Easier
+# Things That Made This Project Easier for Me
 **Using Atom IDE + Github Desktop Git Client**
 
 Both Atom and GitHub Desktop were developed by Github, and seem to link together very seamlessly. Although this is my first time using Atom, a git client,
-and pushing my work to github in a few years, I believe the way these softwares work together made the learning process a lot easier for me.
+and pushing my work to github in a few years, I believe the way these softwares work together made the learning process a lot easier for me
 
 **Writing Code Out Manually**
 
-Although this code has been pulled from a project of the same name by Prof. Duncan Smith, opting to overlook CTRL + C and CTRL + P and rewriting all of the
-code by hand helped me better understand how it functions.
+Although this code has been pulled from a project of the same name by Prof. Duncan Smith, opting to rewrite all of the code by hand helped me to better understand
+how it works
 
 **Commenting Everything**
 
 I don't have an extensive background in IoT or computer science in general, so opting to add comments to everything possible has been a huge help
 in allowing me to understand the code better.
 
-
-# Things I Want to Improve for This Project
-- Add in a light sensor to detect how much light the plant is getting
-
 # What I Am Struggling With
 - I am having difficulty understanding MQTT and the code related to connecting to the wifi, MQTT server, etc.
 - I only made it to step 10 - setting up RPI as a gateway
+
+# Things I Want to Improve for This Project
+- Add in a light sensor to detect how much light the plant is getting
 
 # What I Want to Improve for My Next Project
 - Better and more consistent documentation for each step

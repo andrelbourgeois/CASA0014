@@ -1,12 +1,15 @@
 /*
  *  Simple test to get to get data and time - uses the ezTime library at https://github.com/ropg/ezTime
  *  and then show data from a DHT22 on a web page served by the Huzzah
- *  Duncan Wilson
+ *  André Bourgeois
+ *  November 2021
+ *
+ *  Forked from Duncan Wilson
  *  CASA0014 - 2 - Plant Monitor Workshop
  *  May 2020
  */
 
-#include <ESP8266WiFi.h>
+#include <ESP8266WiFi.h> //import libraries
 #include <ESP8266WebServer.h>
 #include <ezTime.h>
 #include <DHT.h>
@@ -21,7 +24,7 @@ float Temperature;
 float Humidity;
 
 const char* ssid     = "enter SSID";
-const char* password = "enter password";
+const char* password = "()c454,w1f1";
 
 ESP8266WebServer server(80);
 

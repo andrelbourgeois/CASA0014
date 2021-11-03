@@ -2,7 +2,8 @@
  *  Simple test to push data to an MQTT server - uses library from https://pubsubclient.knolleary.net
  *  André Bourgeois
  *  November 2021
- *  forked from Duncan Wilson
+ *
+ *  Forked from Duncan Wilson
  *  CASA0014 - 2 - Plant Monitor Workshop
  *  May 2020
  */
@@ -12,8 +13,8 @@
  #include <PubSubClient.h>
 
  const char* ssid = "enter SSID"; //declare constants
- const char* password = "enter password"; //edit for specified wifi network
- const char* mqtt_server = "enter mqtt url"; //and mqtt server
+ const char* password = "()c454,w1f1"; //edit for specified wifi network
+ const char* mqtt_server = "mqtt.cetools.org"; //and mqtt server
 
  Timezone GB; //declare a timezone for ezTime
 

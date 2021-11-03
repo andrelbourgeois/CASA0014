@@ -2,13 +2,15 @@
     Get date and time - uses the ezTime library at https://github.com/ropg/ezTime -
     and then show data from a DHT22 on a web page served by the Huzzah and
     push data to an MQTT server - uses library from https://pubsubclient.knolleary.net
+    André Bourgeois
+    November 2021
 
-    Duncan Wilson
+    Forked from Duncan Wilson
     CASA0014 - 2 - Plant Monitor Workshop
     May 2020
 */
 
-#include <ESP8266WiFi.h>
+#include <ESP8266WiFi.h> //import libraries
 #include <ESP8266WebServer.h>
 #include <ezTime.h>
 #include <PubSubClient.h>
@@ -34,7 +36,7 @@ DHT dht(DHTPin, DHTTYPE);   // Initialize DHT sensor.
 const char* ssid     = SECRET_SSID;
 const char* password = SECRET_PASS;
 ESP8266WebServer server(80);
-const char* mqtt_server = "bats.cetools.org";
+const char* mqtt_server = "mqtt.cetools.org";
 WiFiClient espClient;
 PubSubClient client(espClient);
 long lastMsg = 0;
@@ -69,7 +71,7 @@ void setup() {
   syncDate();
 
   // start MQTT server
-  client.setServer(mqtt_server, 1883);
+  client.setServer(mqtt_server, 1884);
   client.setCallback(callback);
 
 }

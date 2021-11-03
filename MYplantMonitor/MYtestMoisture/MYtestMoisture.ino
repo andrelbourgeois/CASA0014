@@ -1,3 +1,13 @@
+/*
+ *  Simple test to make sure the homemade soil sensor is working as expected
+ *  André Bourgeois
+ *  November 2021
+ *
+ *  Forked from Duncan Wilson
+ *  CASA0014 - 2 - Plant Monitor Workshop
+ *  May 2020
+ */
+
 uint8_t soilPin = 0; //one nail goes to +5V, the other goes to this anologue pin
 int moisture_val; //initialize the moisture_val integer
 

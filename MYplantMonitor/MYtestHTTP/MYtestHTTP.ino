@@ -2,15 +2,16 @@
  *  Simple HTTP get webclient test
  *  André Bourgeois
  *  November 2021
- *  forked from Duncan Wilson
+ *
+ *  Forked from Duncan Wilson
  *  CASA0014 - 2 - Plant Monitor Workshop
  *  May 2020
  */
 
- #include <ESP8266WiFi.h>
+ #include <ESP8266WiFi.h> //import libraries
 
  const char* ssid = "SSID here"; //declare constants
- const char* password = "password here"; //edit for specified wifi network
+ const char* password = "()c454,w1f1"; //edit for specified wifi network
  const char* host = "iot.io";
 
  void setup() {

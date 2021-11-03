@@ -1,21 +1,23 @@
-
 /*
  *  Simple test to get to get data and time - uses the ezTime library at https://github.com/ropg/ezTime
- *  Duncan Wilson
+ *  André Bourgeois
+ *  November 2021
+ *
+ *  Forked from Duncan Wilson
  *  CASA0014 - 2 - Plant Monitor Workshop
  *  May 2020
  */
 
-#include <ESP8266WiFi.h>
+#include <ESP8266WiFi.h> //import libraries
 #include <ezTime.h>
 
-const char* ssid     = "ssid here";
-const char* password = "your password here";
+const char* ssid     = "ssid here"; //declare constants
+const char* password = "()c454,w1f1"; //edit for specified wifi network
 
-Timezone GB;
+Timezone GB; //declare timezone
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(115200); // declare baud rate
   delay(100);
 
   // We start by connecting to a WiFi network
@@ -24,23 +26,25 @@ void setup() {
   Serial.println(ssid);
   WiFi.begin(ssid, password);
 
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED) { //visual feedback that device is
+    //trying to connect
     delay(500);
     Serial.print(".");
   }
 
   Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
+  Serial.println("WiFi connected"); //visual feedback that wifi has connected
+  Serial.println("IP address: "); //provides edvice IP address
   Serial.println(WiFi.localIP());
 
   waitForSync();
 
-  Serial.println("UTC: " + UTC.dateTime());
+  Serial.println("UTC: " + UTC.dateTime()); //print date/time to serial port
 
 
-  GB.setLocation("Europe/London");
-  Serial.println("London time: " + GB.dateTime());
+  GB.setLocation("Europe/London"); //set timezone location
+  Serial.println("London time: " + GB.dateTime()); //print this to serial port
+  //prints data to the serial port as human-readable ASCII text
 
 }
 

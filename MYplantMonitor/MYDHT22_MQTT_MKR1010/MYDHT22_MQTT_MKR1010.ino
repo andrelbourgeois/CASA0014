@@ -2,15 +2,18 @@
     Get date and time - uses the ezTime library at https://github.com/ropg/ezTime -
     and then show data from a DHT22 on a web page served by the MKR1010 and
     push data to an MQTT server - uses library from https://pubsubclient.knolleary.net
+    André Bourgeois
+    November 2021
 
-    Duncan Wilson
+
+    Forked from Duncan Wilson
     CASA0014 - 2 - Plant Monitor Workshop
     May 2020
 
     Board: Arduino MKR WIFI 1010
 */
 
-#include <SPI.h>
+#include <SPI.h> //import libraries
 #include <WiFiNINA.h>
 #include <ezTime.h>
 #include <PubSubClient.h>
@@ -41,7 +44,7 @@ DHT dht(DHTPin, DHTTYPE);   // Initialize DHT sensor.
 
 
 // MQTT
-const char* mqtt_server = "bats.cetools.org";
+const char* mqtt_server = "mqtt.cetools.org";
 WiFiClient espClient;
 PubSubClient client(espClient);
 long lastMsg = 0;
@@ -78,7 +81,7 @@ void setup() {
   syncDate();
 
   // start MQTT server
-  client.setServer(mqtt_server, 1883);
+  client.setServer(mqtt_server, 1884);
   client.setCallback(callback);
 
 }

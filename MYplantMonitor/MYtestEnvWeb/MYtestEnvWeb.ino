@@ -24,7 +24,7 @@ float Temperature;
 float Humidity;
 
 const char* ssid     = "CE-Hub";
-const char* password = "()c454,w1f1";
+const char* password = "pass";
 
 ESP8266WebServer server(80);
 

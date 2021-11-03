@@ -12,7 +12,7 @@
 #include <ezTime.h>
 
 const char* ssid     = "CE-Hub"; //declare constants
-const char* password = "()c454,w1f1"; //edit for specified wifi network
+const char* password = "pass"; //edit for specified wifi network
 
 Timezone GB; //declare timezone
 

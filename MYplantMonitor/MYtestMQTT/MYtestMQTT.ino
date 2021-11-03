@@ -13,7 +13,7 @@
  #include <PubSubClient.h>
 
  const char* ssid = "CE-Hub"; //declare constants
- const char* password = "()c454,w1f1"; //edit for specified wifi network
+ const char* password = "pass"; //edit for specified wifi network
  const char* mqtt_server = "mqtt.cetools.org"; //and mqtt server
 
  Timezone GB; //declare a timezone for ezTime

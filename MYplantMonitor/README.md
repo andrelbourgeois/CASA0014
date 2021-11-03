@@ -15,11 +15,11 @@ and test sketches that have gone into building this project, and it is currently
 - View soil data
 - Add pictures to readme.md
 - Add more comments to code after understanding what the code does
-- Add step-by-step process to the readme.md
+- Add step-by-step process to the readme.md (include steps and test from workshops)
 
 # Materials
 - Soldering Machine
-- Standrard Feather Huzzah ESP8266
+- Standard Feather Huzzah ESP8266
 - USB Cable
 - Custom CASA Huzzah ESP8266
 - Raspberry Pi (with SD card, SD card reader + case for aesthetics)
@@ -32,7 +32,7 @@ and test sketches that have gone into building this project, and it is currently
 - Potted Plant
 
 # My Plant
-**Begonia maculata**
+**Begonia Maculata**
 
 Also known as the Polka dot Begonia, or Spotted Begonia, this plant can be identified by its large angel wing-shaped leaves patterned with
 polka dots on top and a deep purple-red on the bottom side.
@@ -51,7 +51,7 @@ polka dots on top and a deep purple-red on the bottom side.
 **Using Atom IDE + Github Desktop Git Client**
 
 Both Atom and GitHub Desktop were developed by Github, and seem to link together very seamlessly. Although this is my first time using Atom, a git client,
-and pushing my work to github in a few years, I believe the way these softwares work together made the learning process a lot easier for me
+and pushing my work to Github in a few years, I believe the way these softwares work together made the learning process a lot easier for me
 
 **Writing Code Out Manually**
 
@@ -69,6 +69,7 @@ in allowing me to understand the code better.
 
 # Things I Want to Improve for This Project
 - Add in a light sensor to detect how much light the plant is getting
+- Where is the best placement for the moisture sensor?
 
 # What I Want to Improve for My Next Project
 - Better and more consistent documentation for each step

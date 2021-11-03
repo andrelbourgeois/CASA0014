@@ -10,7 +10,7 @@
 
  #include <ESP8266WiFi.h> //import libraries
 
- const char* ssid = "SSID here"; //declare constants
+ const char* ssid = "CE-Hub"; //declare constants
  const char* password = "()c454,w1f1"; //edit for specified wifi network
  const char* host = "iot.io";
 

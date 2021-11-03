@@ -23,7 +23,7 @@ DHT dht(DHTPin, DHTTYPE);   // Initialize DHT sensor.
 float Temperature;
 float Humidity;
 
-const char* ssid     = "enter SSID";
+const char* ssid     = "CE-Hub";
 const char* password = "()c454,w1f1";
 
 ESP8266WebServer server(80);

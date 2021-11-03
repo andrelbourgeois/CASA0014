@@ -12,7 +12,7 @@
  #include <ezTime.h>
  #include <PubSubClient.h>
 
- const char* ssid = "enter SSID"; //declare constants
+ const char* ssid = "CE-Hub"; //declare constants
  const char* password = "()c454,w1f1"; //edit for specified wifi network
  const char* mqtt_server = "mqtt.cetools.org"; //and mqtt server
 

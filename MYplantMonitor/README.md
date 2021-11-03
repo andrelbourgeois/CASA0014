@@ -16,6 +16,7 @@ and test sketches that have gone into building this project, and it is currently
 - Add pictures to readme.md
 - Add more comments to code after understanding what the code does
 - Add step-by-step process to the readme.md (include steps and test from workshops)
+- Reorganize project into a UCL Github repository
 
 # Materials
 - Soldering Machine

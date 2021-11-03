@@ -66,7 +66,8 @@ in allowing me to understand the code better.
 
 # What I Am Struggling With
 - I am having difficulty understanding MQTT and the code related to connecting to the wifi, MQTT server, etc.
-- I only made it to step 10 - setting up RPI as a gateway
+- Everything after step 10 - setting up RPI as a gateway
+- What is the arduino secrets file?
 
 # Things I Want to Improve for This Project
 - Add in a light sensor to detect how much light the plant is getting

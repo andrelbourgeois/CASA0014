@@ -84,7 +84,7 @@ void sendMQTT(); {
   snprintf(msg, 50, "hello world #%ld", value);
   Serial.print("Publish message: ");
   Serial.println(msg);
-  client.publish("test", msg);
+  client.publish("testAndré", msg);
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {

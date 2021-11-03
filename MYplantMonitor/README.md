@@ -28,6 +28,7 @@ and test sketches that have gone into building this project, and it is currently
 - 10k Resistor x2
 - 1k Resistor x2
 - 220 Resistor x2
+- Transistor
 - 30cm Length of Wire x2
 - 6cm Hardware Nail x2
 - Potted Plant
@@ -39,8 +40,12 @@ Also known as the Polka dot Begonia, or Spotted Begonia, this plant can be ident
 polka dots on top and a deep purple-red on the bottom side.
 
 **Care Instructions**
+- A mixture of peat and another substrate forms a good growing mixture
 - Needs bright, indirect sunlight - must be kept out of direct afternoon sun
 - Water regularly, let top soil dry out between watering, let excess water drain from pot - must keep soil somewhat moist
+- Humidity needs to be around 70% during the daytime and 90% at night
+- Thrives in temperatures between 18°C and 30°C and can tolerate temperatures slightly below 18°C
+- Benefits from being fertilised regularly 2 or 3 times a month
 
 **Things to Keep in Mind**
 - Different plants may require different kinds of care

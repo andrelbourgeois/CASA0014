@@ -13,8 +13,10 @@
  #include <PubSubClient.h>
 
  const char* ssid = "CE-Hub"; //declare constants
- const char* password = "pass"; //edit for specified wifi network
+ const char* password = "wifipass"; //edit for specified wifi network
  const char* mqtt_server = "mqtt.cetools.org"; //and mqtt server
+ const char* mqttuser = "student";
+ const char* mqttpass = "mqttpass";
 
  Timezone GB; //declare a timezone for ezTime
 
@@ -24,6 +26,7 @@
  char msg[50];
  int value = 0;
 
+
  void setup() { //initialize variables’ values,
  //setup communications (ex: Serial),
  //setup modes for digital pins (input/output),
@@ -31,38 +34,39 @@
 
    pinMode(BUILTIN_LED, OUTPUT); //initialize the BUILTIN_LED as an output
    digitalWrite(BUILTIN_LED, HIGH); //turn the LED of by making the voltage high
-   //open serial connection
+   // open serial connection via the wifi to the mqtt broker
    Serial.begin(115200);
-   delay(100);
+   delay(100); // to give time for the serial connection to open
 
    startWifi(); //start a Wi-Fi access point, and try to connect to some given access points
 
    //get real date an time
    waitForSync();
    Serial.println("UTC: " + UTC.dateTime());
-   GBsetLocation("Europe/London");
+   GB.setLocation("Europe/London");
    Serial.println("London time: " + GB.dateTime());
 
-   client.setServer(mqtt_server, 1883);
+   // Once connected to wifi establish connection to mqtt broker
+   client.setServer(mqtt_server, 1884);
+
+  // The callback in this case listens for instructions to
+  // change the state of the LED - here we are initialising
+  // that function
    client.setCallback(callback);
 
  }
 
- void loop() { //loops consecutively,
- //allowing your program to change and respond,
- //use it to actively control the Arduino board
- delay(5000;)
- //Serial.println(GB.dateTime("H:i:s")); // UTC.dateTime("l, d-M-y H:i:s.v T")
- sendMQTT();
-
- }
+void loop() {
+  delay(5000);
+  sendMQTT();
+}
 
 void startWifi() {
   // start by connecting to the wifi network
-  Serial.print();
+  Serial.println();
   Serial.print("Connecting to ");
-  Serial.println(ssid);
-  Serial.println(ssid, password);
+  Serial.println(ssid); //visual feedback of which wifi we're connecting to
+  WiFi.begin(ssid, password);
 
   //check to see if connected and wait until you are
   while (WiFi.status() != WL_CONNECTED) {
@@ -70,21 +74,21 @@ void startWifi() {
     Serial.print(".");
   }
   Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.print("IP address: ");
+  Serial.println("WiFi connected"); //tells us that we're connected to wifi
+  Serial.print("IP address: "); //shows device IP
   Serial.println(WiFi.localIP());
 }
 
-void sendMQTT(); {
+void sendMQTT() {
   if (!client.connected()) {
     reconnect();
   }
   client.loop();
   ++value;
-  snprintf(msg, 50, "hello world #%ld", value);
+  snprintf(msg, 50, "hello world #%ld, this is a test", value);
   Serial.print("Publish message: ");
   Serial.println(msg);
-  client.publish("testAndré", msg);
+  client.publish("student/CASA0014/plant/ucfnbou", msg);
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
@@ -114,12 +118,11 @@ void reconnect() {
     String clientId = "ESP8266Client-";
     clientId += String(random(0xffff), HEX);
     //attempt to connect
-    if (client.connect(clientId.c_str()) {
+    
+    if (client.connect(clientId.c_str(), mqttuser, mqttpass)) {
       Serial.println("connected");
-      //once connected, publish an announcement..
-      client.publish("outTopic", "hello world");
-      //...and resubscribe
-      client.subscribe("inTopic");
+      //...and subscribe to messages on broker
+      client.subscribe("student/CASA0014/plant/ucfnbou/inTopic");
     }
     else {
       Serial.print("failed, rc=");

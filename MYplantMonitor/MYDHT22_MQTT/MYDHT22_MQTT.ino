@@ -1,16 +1,16 @@
+
+
 /*
     Get date and time - uses the ezTime library at https://github.com/ropg/ezTime -
     and then show data from a DHT22 on a web page served by the Huzzah and
     push data to an MQTT server - uses library from https://pubsubclient.knolleary.net
-    André Bourgeois
-    November 2021
 
-    Forked from Duncan Wilson
+    Duncan Wilson
     CASA0014 - 2 - Plant Monitor Workshop
     May 2020
 */
 
-#include <ESP8266WiFi.h> //import libraries
+#include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <ezTime.h>
 #include <PubSubClient.h>
@@ -31,10 +31,14 @@ DHT dht(DHTPin, DHTTYPE);   // Initialize DHT sensor.
 
 
 // Wifi and MQTT
-#include "arduino_secrets.h"
-///////please enter your sensitive data in the Secret tab/arduino_secrets.h
+#include "arduino_secrets.h" 
+
+
 const char* ssid     = SECRET_SSID;
 const char* password = SECRET_PASS;
+const char* mqttuser = SECRET_MQTTUSER;
+const char* mqttpass = SECRET_MQTTPASS;
+
 ESP8266WebServer server(80);
 const char* mqtt_server = "mqtt.cetools.org";
 WiFiClient espClient;
@@ -49,16 +53,20 @@ Timezone GB;
 
 
 void setup() {
-  // declare the built in LED and turn it off
-  pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
-  digitalWrite(BUILTIN_LED, HIGH);  // Turn the LED off by making the voltage HIGH
+  // Set up LED to be controllable via broker
+  // Initialize the BUILTIN_LED pin as an output
+  // Turn the LED off by making the voltage HIGH
+  pinMode(BUILTIN_LED, OUTPUT);     
+  digitalWrite(BUILTIN_LED, HIGH);  
 
-  pinMode(sensorVCC, OUTPUT);
+  // Set up the outputs to control the soil sensor
+  // switch and the blue LED for status indicator
+  pinMode(sensorVCC, OUTPUT); 
   digitalWrite(sensorVCC, LOW);
-  pinMode(blueLED, OUTPUT);
+  pinMode(blueLED, OUTPUT); 
   digitalWrite(blueLED, HIGH);
 
-  // open serial connection
+  // open serial connection for debug info
   Serial.begin(115200);
   delay(100);
 
@@ -66,6 +74,7 @@ void setup() {
   pinMode(DHTPin, INPUT);
   dht.begin();
 
+  // run initialisation functions
   startWifi();
   startWebserver();
   syncDate();
@@ -85,21 +94,21 @@ void loop() {
     sendMQTT();
     Serial.println(GB.dateTime("H:i:s")); // UTC.dateTime("l, d-M-y H:i:s.v T")
   }
-
+  
   client.loop();
 }
 
 void readMoisture(){
-
+  
   // power the sensor
   digitalWrite(sensorVCC, HIGH);
   digitalWrite(blueLED, LOW);
   delay(100);
   // read the value from the sensor:
-  Moisture = analogRead(soilPin);
-  //Moisture = map(analogRead(soilPin), 0,320, 0, 100);    // note: if mapping work out max value by dipping in water
-  //stop power
-  digitalWrite(sensorVCC, LOW);
+  Moisture = analogRead(soilPin);         
+  //Moisture = map(analogRead(soilPin), 0,320, 0, 100);    // note: if mapping work out max value by dipping in water     
+  //stop power 
+  digitalWrite(sensorVCC, LOW);  
   digitalWrite(blueLED, HIGH);
   delay(100);
   Serial.print("Wet ");
@@ -151,19 +160,19 @@ void sendMQTT() {
   snprintf (msg, 50, "%.1f", Temperature);
   Serial.print("Publish message for t: ");
   Serial.println(msg);
-  client.publish("student/casa0014/plant/ucfnbou/temperature", msg);
+  client.publish("student/CASA0014/plant/ucfnbou/temperature", msg);
 
   Humidity = dht.readHumidity(); // Gets the values of the humidity
   snprintf (msg, 50, "%.0f", Humidity);
   Serial.print("Publish message for h: ");
   Serial.println(msg);
-  client.publish("student/casa0014/plant/ucfnbou/humidity", msg);
+  client.publish("student/CASA0014/plant/ucfnbou/humidity", msg);
 
   //Moisture = analogRead(soilPin);   // moisture read by readMoisture function
   snprintf (msg, 50, "%.0i", Moisture);
   Serial.print("Publish message for m: ");
   Serial.println(msg);
-  client.publish("student/casa0014/plant/ucfnbou/moisture", msg);
+  client.publish("student/CASA0014/plant/ucfnbou/moisture", msg);
 
 }
 
@@ -193,13 +202,12 @@ void reconnect() {
     // Create a random client ID
     String clientId = "ESP8266Client-";
     clientId += String(random(0xffff), HEX);
-    // Attempt to connect
-    if (client.connect(clientId.c_str())) {
+    
+    // Attempt to connect with clientID, username and password
+    if (client.connect(clientId.c_str(), mqttuser, mqttpass)) {
       Serial.println("connected");
-      // Once connected, publish an announcement...
-      client.publish("plant/minty/outTopic", "hello world");
       // ... and resubscribe
-      client.subscribe("plant/minty/inTopic");
+      client.subscribe("student/CASA0014/plant/ucfnbou/inTopic");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());

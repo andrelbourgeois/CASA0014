@@ -46,7 +46,7 @@
    delay(5000);
    ++value;
 
-   Serial.println("----------------------------")
+   Serial.println("----------------------------");
    Serial.print("Connecting to ");
    Serial.println(host);
 
@@ -71,7 +71,7 @@
    //read all the lines of the reply
    //from the server and print them to Serial
    while(client.available()) {
-     String line = client.readStringUntil("\r");
+     String line = client.readStringUntil('\r');
      Serial.print(line);
    }
 
